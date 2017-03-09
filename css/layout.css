@@ -15,8 +15,7 @@ h1,h2,h3,h4, p{
 }
 
 .about{
-  font-style: italic;
-  color: #7f8c8d;
+  color: #fff;
   margin-bottom:10px; 
 }
 
@@ -96,6 +95,12 @@ h1,h2,h3,h4, p{
   margin-top: 10px;
 }
 
+.more{
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+}
+
 .right{
   text-align: right;
 }
@@ -108,6 +113,10 @@ h1,h2,h3,h4, p{
 
 .col-md-6, .col-md-12{
   margin-bottom:30px;
+}
+
+.col-md-6 .project-content{
+  height: 300px;
 }
 
 .center{
