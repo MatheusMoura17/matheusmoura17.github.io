@@ -24,7 +24,7 @@ h1,h2,h3,h4, p{
   margin-top: 15px;
 }
 
-.more a:link, a:visited, a:active{
+.more a, .more a:link, .more a:visited, .more a:active{
   color: #d35400;
 }
 
@@ -153,7 +153,12 @@ min-height: 200px;
   opacity: 0;
 }
 
-.about, .projects, .contact{
+.asciiPicture{
+font-size: 7px;
+text-align: justify;
+}
+
+.about, .projects, .contact, .aboutMy{
   opacity: 0;
   animation-duration: 1s;
   animation-name: fadeInProjects;
