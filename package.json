@@ -1,0 +1,35 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel serve src/index.html --open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusMoura17/matheusmoura17.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatheusMoura17/matheusmoura17.github.io/issues"
+  },
+  "homepage": "https://github.com/MatheusMoura17/matheusmoura17.github.io#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "parcel": "^1.12.4",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
