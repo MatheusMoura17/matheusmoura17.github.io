@@ -4,7 +4,7 @@ import { Router, Switch } from 'wouter'
 import Home from './Pages/Home'
 
 export const routes = {
-  home: '/'
+  home: '/',
 }
 
 const App: React.FC = () => {
@@ -13,7 +13,8 @@ const App: React.FC = () => {
       <Switch>
         <Home path={routes.home} />
       </Switch>
-    </Router>)
+    </Router>
+  )
 }
 
-export default App;
+export default App

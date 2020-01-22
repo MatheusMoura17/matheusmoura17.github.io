@@ -5,7 +5,7 @@ interface IHomeProps {
   path: string
 }
 
-const Home: React.FC<IHomeProps   > =  () => {
+const Home: React.FC<IHomeProps> = () => {
   return <Layout>ok</Layout>
 }
 
