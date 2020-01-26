@@ -5,6 +5,7 @@ import Home from './Pages/Home'
 
 export const routes = {
   home: '/',
+  project: '/project',
 }
 
 const App: React.FC = () => {
@@ -12,6 +13,7 @@ const App: React.FC = () => {
     <Router>
       <Switch>
         <Home path={routes.home} />
+        <div></div>
       </Switch>
     </Router>
   )

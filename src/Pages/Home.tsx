@@ -6,7 +6,11 @@ interface IHomeProps {
 }
 
 const Home: React.FC<IHomeProps> = () => {
-  return <Layout>ok</Layout>
+  return (
+    <Layout>
+      <div>Olá meu nome é Matheus</div>
+    </Layout>
+  )
 }
 
 export default Home

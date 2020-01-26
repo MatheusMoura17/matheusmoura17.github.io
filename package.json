@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/MatheusMoura17/matheusmoura17.github.io#readme",
   "devDependencies": {
+    "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
     "@typescript-eslint/parser": "^2.17.0",
@@ -34,7 +35,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.9.0",
-    "@types/react": "^16.9.18",
+    "@material-ui/icons": "^4.5.1",
     "@types/wouter": "^2.2.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
