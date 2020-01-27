@@ -1,0 +1,10 @@
+{
+    "name": "Recife Adventures",
+    "fullName": "Recife Adventures",
+    "describe": "Jogo resultante da disciplina de Informatica Sustentável, o jogo foi premiado e ficou em 3º lugar no WITIC 2015. O objetivo do jogo é ajudar o personagem a remover todo o lixo do cenário movendo os braços e pulando com o kinect.",
+    "createAt": "11/03/2017",
+    "images": {
+        "main": "/images/recife-adventures/image.png"
+    },
+    "skills": ["Game Design", "UI", "Development", "Game Art"]
+}

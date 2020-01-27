@@ -1,0 +1,10 @@
+{
+    "name": "O Pequeno Urubu",
+    "fullName": "O Pequeno Urubu",
+    "describe": "Um dos primeiros jogos que desenvolvi em grupo, foi um grande aprendizado produzir um clone de Flappy Bird dividindo a experiencia e trabalho com colegas. O objetivo é chegar o mais longe possivel sem bater nos obstaculos.",
+    "createAt": "01/11/2016",
+    "images": {
+        "main": "/images/o-pequeno-urubu/image.png"
+    },
+    "skills": ["Game Design", "UI", "Development", "Game Art"]
+}

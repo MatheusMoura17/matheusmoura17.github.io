@@ -1,0 +1,10 @@
+{
+    "name": "Embaixadinha",
+    "fullName": "Embaixadinha",
+    "describe": "Um jogo simples e viciante de bater embaixadinhas, foi produzido em 2014 e teve mais de 40 mil downloads na Play Store em menos de uma semana em 2016.",
+    "createAt": "01/11/2016",
+    "images": {
+        "main": "/images/embaixadinha/image.png"
+    },
+    "skills": ["Game Design", "UI", "Development", "Game Art"]
+}

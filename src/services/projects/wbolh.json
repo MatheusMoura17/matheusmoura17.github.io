@@ -1,0 +1,10 @@
+{
+    "name": "Wbolh",
+    "fullName": "World Battle of Little Heroes",
+    "describe": "Jogo resultante da disciplina de Engenharia de Software. No jogo, o player deve escanear as cartas de personagem e carta matriz para conectar-se em servidores locais e então jogar contra os amigos.",
+    "createAt": "01/11/2016",
+    "images": {
+        "main": "/images/wbolh/image.png"
+    },
+    "skills": ["Game Design", "UI", "Development"]
+}

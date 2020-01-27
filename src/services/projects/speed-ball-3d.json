@@ -1,0 +1,10 @@
+{
+    "name": "Speed Ball 3d",
+    "fullName": "Speed Ball 3d",
+    "describe": "Meu primeiro jogo em 3D. Para este projeto foi utilizado Unity 3, uma versão bem antiga da game engine. O objetivo do jogo é chegar o mais longe possivel sem deixar a bola bater nas paredes ou cair.",
+    "createAt": "01/11/2016",
+    "images": {
+        "main": "/images/speed-ball-3d/image.png"
+    },
+    "skills": ["Game Design", "UI", "Development", "Game Art"]
+}

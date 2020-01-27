@@ -1,9 +1,10 @@
 {
     "name": "West Combat",
-    "describe": "Jogo resultante da disciplina de Engenharia de Software. No jogo, o player deve escanear as cartas de personagem e carta matriz para conectar-se em servidores locais e então jogar contra os amigos.",
-    "createAt": "01/11/2016",
+    "fullName": "West Combat",
+    "describe": "Um free for all multiplayer online, o objetivo foi fazer um jogo divertido para jogar com os amigos, sem game modes ou restrições. Para este jogo foi utilizado o framework PhotonEngine.",
+    "createAt": "11/03/2017",
     "images": {
         "main": "/images/west-combat/image.png"
     },
-    "skills": ["Game Design", "UI", "Development"]
+    "skills": ["Game Design", "UI", "Development", "Game Art"]
 }

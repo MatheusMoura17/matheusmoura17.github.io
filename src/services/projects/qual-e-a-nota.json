@@ -1,0 +1,10 @@
+{
+    "name": "Qual é a nota?",
+    "fullName": "Qual é a nota?",
+    "describe": "Feito para músicos e estudantes de música que queiram treinar o ouvido absoluto. Jogo de notas musicais, dedicado aos adorantes de música. Nele você pode desafiar a si mesmo, tentando adivinhar a nota tocada naquele instante. Acerte a maior quantidade de notas possíveis e desbloqueie o próximos níveis. Para cada nível desbloqueado, mais notas diferentes são mostradas, aumentando cada vez mais a dificuldade. Este jogo não só poderá te ajudar a passar o tempo, como também irá melhorar sua percepção sonora. Um jogo simples e viciante de bater embaixadinhas, foi produzido em 2014 e teve mais de 40 mil downloads na Play Store em menos de uma semana em 2016.",
+    "createAt": "01/11/2016",
+    "images": {
+        "main": "/images/qual-e-a-nota/image.png"
+    },
+    "skills": ["Game Design", "UI", "Development", "Game Art"]
+}
