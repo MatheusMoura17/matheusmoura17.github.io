@@ -3,9 +3,10 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core'
 import Box from '@material-ui/core/Box'
 
-import Layout from '../Components/Layout'
-import ProjectCard from '../components/ProjectCard'
-import projects from '../services/projects'
+import Layout from '../../Components/Layout'
+import ProjectCard from '../../components/ProjectCard'
+import projects from '../../services/projects'
+import Header from './Header'
 
 const useStyles = makeStyles({
   root: {
@@ -26,6 +27,9 @@ const Home: React.FC<IHomeProps> = () => {
     <Layout>
       <Box className={classes.root}>
         <Grid className={classes.projects} container spacing={4}>
+          <Grid item xs={12}>
+            <Header />
+          </Grid>
           {projects.map((project, index) => (
             <Grid key={index} item lg={2} md={3} sm={6} xs={6}>
               <ProjectCard

@@ -18,7 +18,10 @@ const useStyles = makeStyles({
   container: {
     marginLeft: drawerWidth,
   },
-  listIcon: { minWidth: 0 },
+  listIcon: {
+    minWidth: 0,
+    color: '#ecf0f1',
+  },
   verticalList: {},
   horizontalList: {
     display: 'flex',
@@ -27,6 +30,9 @@ const useStyles = makeStyles({
   },
   drawer: {
     width: drawerWidth,
+  },
+  drawerPaper: {
+    background: '#8e44ad',
   },
   root: {
     display: 'flex',
@@ -97,6 +103,9 @@ const Layout: React.FC<ILayoutProps> = ({ children }) => {
           open
           variant="permanent"
           anchor="left"
+          classes={{
+            paper: classes.drawerPaper,
+          }}
         >
           <Box
             display="flex"
@@ -113,7 +122,14 @@ const Layout: React.FC<ILayoutProps> = ({ children }) => {
 
       {/** Menu mobile */}
       <Hidden mdUp>
-        <Drawer open anchor="bottom" variant="permanent">
+        <Drawer
+          open
+          anchor="bottom"
+          variant="permanent"
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
           <Box
             display="flex"
             flexDirection="row"

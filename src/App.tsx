@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Switch } from 'wouter'
 
-import Home from './Pages/Home'
+import Home from './pages/Home'
 
 export const routes = {
   home: '/',
