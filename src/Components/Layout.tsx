@@ -80,7 +80,7 @@ const MenuItems: React.FC<IMenuItemProps> = ({ direction }) => {
 }
 
 interface ILayoutProps {
-  children?: Element
+  children?: React.ReactNode
 }
 
 /**
@@ -112,7 +112,7 @@ const Layout: React.FC<ILayoutProps> = ({ children }) => {
       </Hidden>
 
       {/** Menu mobile */}
-      <Hidden smUp>
+      <Hidden mdUp>
         <Drawer open anchor="bottom" variant="permanent">
           <Box
             display="flex"
