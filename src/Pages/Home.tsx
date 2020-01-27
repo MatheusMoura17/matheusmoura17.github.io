@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box'
 
 import Layout from '../Components/Layout'
 import ProjectCard from '../components/ProjectCard'
+import projects from '../services/projects'
 
 const useStyles = makeStyles({
   root: {
@@ -25,11 +26,11 @@ const Home: React.FC<IHomeProps> = () => {
     <Layout>
       <Box className={classes.root}>
         <Grid className={classes.projects} container spacing={4}>
-          {[...new Array(50)].map((_, index) => (
+          {projects.map((project, index) => (
             <Grid key={index} item lg={2} md={3} sm={6} xs={6}>
               <ProjectCard
-                name="West Combat"
-                image="/images/west-combat/image.png"
+                name={project.name}
+                image={project.images.main}
                 link=""
                 overlay={Math.random() * 2 > 1 ? 'circle' : 'hexagon'}
               />

@@ -40,6 +40,10 @@ const ProjectCardInfo = styled.div<Pick<IProjectCardProps, 'overlay'>>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  && > p {
+    font-family: 'Bebas Neue', cursive;
+  }
 `
 
 const Root = styled.div`
