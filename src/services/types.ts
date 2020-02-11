@@ -10,12 +10,8 @@ interface IProject {
   createAt: string
   /** Todas as habilidades abordadas neste projeto */
   skills: string[]
-  images: {
-    /** Imagem principal do projeto */
-    main: string
-    gallery: string[]
-  }
-  video: string
+  images: string[]
+  video?: string
   /** Link do projeto na play store */
-  playStoreLink: string
+  playStoreLink?: string
 }

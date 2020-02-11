@@ -3,20 +3,17 @@
     "fullName": "Star Donkeys",
     "describe": "Policarpo e Sasha, são pesquisadores científicos. Estão fazendo uma breve varredura no sistema solar a fim de encontrar vida inteligente em outros planetas, em uma de suas viagens, sua nave foi atingida por uma estranha chuva de meteoros, que junto lhes deu super poderes por causa de um cristal cósmico. Agora com um novo DNA, eles podem respirar no espaço e ganhar propulsão ao soltar peidos flamejantes. Ajude-os e divirta-se!",
     "createAt": "01/11/2015",
-    "images": {
-        "main": "/images/star-donkeys/image.png",
-        "gallery": [
-            "/images/star-donkeys/image.png",
-            "/images/star-donkeys/image (1).png",
-            "/images/star-donkeys/image (2).png",
-            "/images/star-donkeys/image (3).png",
-            "/images/star-donkeys/image (4).png",
-            "/images/star-donkeys/image (5).png",
-            "/images/star-donkeys/image (6).png",
-            "/images/star-donkeys/image (7).png",
-            "/images/star-donkeys/image (8).png"
-        ]
-    },
+    "images":  [
+        "/images/star-donkeys/image.png",
+        "/images/star-donkeys/image (1).png",
+        "/images/star-donkeys/image (2).png",
+        "/images/star-donkeys/image (3).png",
+        "/images/star-donkeys/image (4).png",
+        "/images/star-donkeys/image (5).png",
+        "/images/star-donkeys/image (6).png",
+        "/images/star-donkeys/image (7).png",
+        "/images/star-donkeys/image (8).png"
+    ],
     "video": "X5wyLYNyRDE",
     "playStoreLink": "https://play.google.com/store/apps/details?id=com.homyapps.stardonkeys&hl=pt_BR",
     "skills": ["Game Design", "UI", "Development"]

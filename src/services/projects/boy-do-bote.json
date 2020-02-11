@@ -3,8 +3,17 @@
     "fullName": "Boy do Bote",
     "describe": "Jogo inspirado em meme momentâneo, nele o jogador deve usar os comandos de swipe do android para direcionar o personagem. O jogo foi produzido em 2 dias e teve uma postagem na pagina Diário de Pernambuco. Perdeu! Perdeu! Boy do bote é um Endless Runner em que o jogador deve \"dar o bote\" no celular das pessoas distraídas que estão voltando do trabalho de ônibus num dia chuvoso. Inspirado em fatos reais acontecidos na cidade de Recife-PE. Como um bom boy, você deve desviar dos obstáculos que virão em sua direção. O jogo é divertido e vem com uma temática diferente.",
     "createAt": "11/03/2017",
-    "images": {
-        "main": "/images/boy-do-bote/image.png"
-    },
+    "images": [
+        "/images/boy-do-bote/image (0).png",
+        "/images/boy-do-bote/image (1).png",
+        "/images/boy-do-bote/image (2).png",
+        "/images/boy-do-bote/image (3).png",
+        "/images/boy-do-bote/image (4).png",
+        "/images/boy-do-bote/image (5).png",
+        "/images/boy-do-bote/image (6).png",
+        "/images/boy-do-bote/image (7).png",
+        "/images/boy-do-bote/image (8).png"
+    ],
+    "playStoreLink": "https://play.google.com/store/apps/details?id=com.homyapps.boydobote",
     "skills": ["Game Design", "Development"]
 }

@@ -31,7 +31,7 @@ const Home: React.FC<IHomeProps> = () => {
             <Grid key={index} item lg={2} md={3} sm={6} xs={6}>
               <ProjectCard
                 name={project.name}
-                image={project.images.main}
+                image={project.images[0]}
                 link=""
                 overlay={Math.random() * 2 > 1 ? 'circle' : 'hexagon'}
               />

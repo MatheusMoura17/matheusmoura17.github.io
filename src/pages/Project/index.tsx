@@ -51,25 +51,30 @@ const Project: React.FC<IHomeProps> = () => {
           </Grid>
 
           {/** Vídeo demonstrativo */}
-          <Grid item sm={12}>
-            <TypographyStyled variant="h5">Vídeo demostrativo</TypographyStyled>
-
-            <YouTube id={project.video} />
-          </Grid>
+          {project.video && (
+            <Grid item sm={12}>
+              <TypographyStyled variant="h5">
+                Vídeo demostrativo
+              </TypographyStyled>
+              <YouTube id={project.video} />
+            </Grid>
+          )}
 
           {/** Opções de acesso */}
           <Grid item sm={12}>
             <TypographyStyled variant="h5">Opções de acesso</TypographyStyled>
-            <a target="blank" href={project.playStoreLink}>
-              <img src="/images/others/play-store.png"></img>
-            </a>
+            {project.playStoreLink && (
+              <a target="blank" href={project.playStoreLink}>
+                <img src="/images/others/play-store.png"></img>
+              </a>
+            )}
           </Grid>
 
           {/** Galeria de imagens */}
           <Grid item sm={12}>
             <TypographyStyled variant="h5">Galeria de imagens</TypographyStyled>
             <Grid>
-              {project.images.gallery.map((item, index) => (
+              {project.images.map((item, index) => (
                 <Grid sm={12} key={index}>
                   <Image src={item} />
                 </Grid>
