@@ -1,10 +1,14 @@
 {
     "name": "Enem Runner",
     "fullName": "Enem Runner",
-    "describe": "Produzido em 2 dias e inspirado nos alunos que chegam atrasados para a ENEM. Já pensou em estar atrasado para uma das provas mais importantes do Brasil? Viva este momento no Enem Runner. Chegue o mais rápido possível para fazer a prova do Enem 2015. Mas lembre-se! os portões fecham as 13:00 horas, horário de Brasilia",
+    "describe": "Já pensou em estar atrasado para uma das provas mais importantes do Brasil? Viva este momento no Enem Runner. Chegue o mais rápido possível para fazer a prova do Enem 2015. Mas lembre-se! os portões fecham as 13:00 horas, horário de Brasilia.",
     "createAt": "01/11/2016",
-    "images": {
-        "main": "/images/enem-runner/image.png"
-    },
+    "images": [
+        "/images/enem-runner/image (0).png",
+        "/images/enem-runner/image (1).png",
+        "/images/enem-runner/image (2).png",
+        "/images/enem-runner/image (3).png"
+    ],
+    "playStoreLink": "https://play.google.com/store/apps/details?id=com.homyapps.enemrunner",
     "skills": ["Game Design", "UI", "Development", "Game Art"]
 }

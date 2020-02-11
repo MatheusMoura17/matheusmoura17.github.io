@@ -17,7 +17,7 @@ const ProjectCardStyled = styled.div<Pick<IProjectCardProps, 'image'>>`
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  background: url(${({ image }: Pick<IProjectCardProps, 'image'>) => image});
+  background: url("${({ image }: Pick<IProjectCardProps, 'image'>) => image}");
   background-position: center;
   background-size: cover;
   cursor: pointer;

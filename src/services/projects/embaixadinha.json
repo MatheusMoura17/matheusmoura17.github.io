@@ -1,10 +1,14 @@
 {
     "name": "Embaixadinha",
     "fullName": "Embaixadinha",
-    "describe": "Um jogo simples e viciante de bater embaixadinhas, foi produzido em 2014 e teve mais de 40 mil downloads na Play Store em menos de uma semana em 2016.",
+    "describe": "Faça a maior quantidade de embaixadinhas que conseguir e desafie seus amigos em um ranking de melhores jogadores.",
     "createAt": "01/11/2016",
-    "images": {
-        "main": "/images/embaixadinha/image.png"
-    },
+    "images": [
+        "/images/embaixadinha/image (0).png",
+        "/images/embaixadinha/image (1).png",
+        "/images/embaixadinha/image (2).png"
+    ],
+    "video": "pSYN-u6_QKU",
+    "playStoreLink": "https://play.google.com/store/apps/details?id=com.homyapps.embaixadinha",
     "skills": ["Game Design", "UI", "Development", "Game Art"]
 }

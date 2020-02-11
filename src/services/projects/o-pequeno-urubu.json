@@ -1,10 +1,13 @@
 {
     "name": "O Pequeno Urubu",
     "fullName": "O Pequeno Urubu",
-    "describe": "Um dos primeiros jogos que desenvolvi em grupo, foi um grande aprendizado produzir um clone de Flappy Bird dividindo a experiencia e trabalho com colegas. O objetivo é chegar o mais longe possivel sem bater nos obstaculos.",
+    "describe": "Mostre habilidade e total controle para fazer o pequeno urubuzinho voar e passar pelos obstáculos do mapa, mas lembrem-se que eles são móveis e em alguns momentos eles estarão mais altos, em outros mais baixos, e assim por diante, até o final da fase! Desafie seus amigos e tentem ver quem é o melhor.",
     "createAt": "01/11/2016",
-    "images": {
-        "main": "/images/o-pequeno-urubu/image.png"
-    },
+    "images": [
+        "/images/o-pequeno-urubu/image (0).png",
+        "/images/o-pequeno-urubu/image (1).png",
+        "/images/o-pequeno-urubu/image (2).png"
+    ],
+    "playStoreLink": "https://play.google.com/store/apps/details?id=com.homyapps.opequenourubu",
     "skills": ["Game Design", "UI", "Development", "Game Art"]
 }

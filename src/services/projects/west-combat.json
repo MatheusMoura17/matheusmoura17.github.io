@@ -3,8 +3,14 @@
     "fullName": "West Combat",
     "describe": "Um free for all multiplayer online, o objetivo foi fazer um jogo divertido para jogar com os amigos, sem game modes ou restrições. Para este jogo foi utilizado o framework PhotonEngine.",
     "createAt": "11/03/2017",
-    "images": {
-        "main": "/images/west-combat/image.png"
-    },
-    "skills": ["Game Design", "UI", "Development", "Game Art"]
+    "images":  [
+        "/images/west-combat/image (0).png",
+        "/images/west-combat/image (1).png",
+        "/images/west-combat/image (2).png",
+        "/images/west-combat/image (3).png",
+        "/images/west-combat/image (4).png",
+        "/images/west-combat/image (5).png",
+        "/images/west-combat/image (6).png"
+    ],
+    "skills": ["Game Design", "UI", "Development"]
 }

@@ -1,10 +1,15 @@
 {
     "name": "Gremlin Jump",
     "fullName": "Gremlin Jump",
-    "describe": "Outro clone de um jogo simples, o objetivo do projeto foi testar novas mecanicas e aumentar os conhecimentos de desenvolvimento de jogos em equipe. Muito viciante e divertido jogo com um famoso Gremlin. Você deve direcionar o celular para onde quer saltar e mantê-lo no ar enquanto o Gremlin salta entre as nuvens, quanto mais alto ele chega mais pontos você ganha. Gremlin Jump vai lhe dar bons momentos de emoção. Tente chegar o mais alto que puder e supere seus amigos e outros jogadores que também jogam o jogo. Sua pontuação é mostrada num Ranking Online após você se conectar com o Facebook.",
+    "describe": "Muito viciante e divertido jogo com um famoso Gremlin. Você deve direcionar o celular para onde quer saltar e mantê-lo no ar enquanto o Gremlin salta entre as nuvens, quanto mais alto ele chega mais pontos você ganha. Gremlin Jump vai lhe dar bons momentos de emoção. Tente chegar o mais alto que puder e supere seus amigos e outros jogadores que também jogam o jogo. Sua pontuação é mostrada num Ranking Online após você se conectar com o Facebook",
     "createAt": "01/11/2016",
-    "images": {
-        "main": "/images/gremlin-jump/image.png"
-    },
+    "images": [
+        "/images/gremlin-jump/image (0).png",
+        "/images/gremlin-jump/image (1).png",
+        "/images/gremlin-jump/image (2).png",
+        "/images/gremlin-jump/image (3).png",
+        "/images/gremlin-jump/image (4).png"
+    ],
+    "playStoreLink": "https://play.google.com/store/apps/details?id=com.homyapps.gremlinjump",
     "skills": ["Game Design", "UI", "Development", "Game Art"]
 }

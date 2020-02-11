@@ -3,8 +3,10 @@
     "fullName": "Salve Recife",
     "describe": "O jogo foi elaborado para o concurso ECO Recife 2015. Nele você deve cumprir a missão do cenário removendo toda sujeira, separando o lixo e até mesmo removendo as garrafas pet dos rios, quanto mais rapido conseguir completar a missão mais pontos ganha.",
     "createAt": "00/00/2016",
-    "images": {
-        "main": "/images/salve-recife/image.png"
-    },
+    "images": [
+        "/images/salve-recife/image (0).png",
+        "/images/salve-recife/image (1).png"
+    ],
+    "video": "MzQbQcVzfFY",
     "skills": ["Game Design", "UI", "Development"]
 }

@@ -4,8 +4,6 @@ import styled from 'styled-components'
 
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import GridList from '@material-ui/core/GridList'
-import GridListTile from '@material-ui/core/GridListTile'
 import YouTube from 'react-youtube-embed'
 import Container from '@material-ui/core/Container'
 
