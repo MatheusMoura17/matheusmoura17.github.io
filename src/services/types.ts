@@ -13,5 +13,9 @@ interface IProject {
   images: {
     /** Imagem principal do projeto */
     main: string
+    gallery: string[]
   }
+  video: string
+  /** Link do projeto na play store */
+  playStoreLink: string
 }

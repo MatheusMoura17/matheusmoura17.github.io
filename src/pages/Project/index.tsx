@@ -1,14 +1,30 @@
 import React from 'react'
 import { useRoute } from 'wouter'
+import styled from 'styled-components'
+
 import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
+import Typography from '@material-ui/core/Typography'
+import GridList from '@material-ui/core/GridList'
+import GridListTile from '@material-ui/core/GridListTile'
+import YouTube from 'react-youtube-embed'
+import Container from '@material-ui/core/Container'
 
 import Layout from '../../Components/Layout'
 import { routes } from '../../App'
-import { Typography } from '@material-ui/core'
-import YouTube from 'react-youtube-embed'
-
 import projects from '../../services/projects'
+
+const StyledContainer = styled(Container)`
+  background: #fff;
+`
+
+const TypographyStyled = styled(Typography)`
+  text-align: justify;
+  font-family: 'Bebas Neue', cursive;
+`
+
+const Image = styled.img`
+  width: 100%;
+`
 
 interface IHomeProps {
   path: string
@@ -20,27 +36,48 @@ const Project: React.FC<IHomeProps> = () => {
 
   return (
     <Layout>
-      <Box>
+      <StyledContainer maxWidth="md">
         <Grid container spacing={2}>
+          {/** Area de informações */}
           <Grid item sm={12}>
-            <Typography variant="h4">{project.name}</Typography>
+            <TypographyStyled
+              style={{ padding: '40px 0' }}
+              variant="h3"
+              gutterBottom
+            >
+              {project.name}
+            </TypographyStyled>
+            <TypographyStyled>{project.describe}</TypographyStyled>
           </Grid>
-          <Grid item lg={8} md={8}>
-            <Typography>{project.describe}</Typography>
+
+          {/** Vídeo demonstrativo */}
+          <Grid item sm={12}>
+            <TypographyStyled variant="h5">Vídeo demostrativo</TypographyStyled>
+
+            <YouTube id={project.video} />
           </Grid>
-          <Grid item lg={4} md={4}>
-            <img src="/images/others/play-store.png"></img>
+
+          {/** Opções de acesso */}
+          <Grid item sm={12}>
+            <TypographyStyled variant="h5">Opções de acesso</TypographyStyled>
+            <a target="blank" href={project.playStoreLink}>
+              <img src="/images/others/play-store.png"></img>
+            </a>
           </Grid>
-          <Grid item lg={4} md={4}>
-            <Box>
-              <YouTube id="X5wyLYNyRDE" />
-            </Box>
-          </Grid>
-          <Grid item lg={4} md={4}>
-            <Box>Game here</Box>
+
+          {/** Galeria de imagens */}
+          <Grid item sm={12}>
+            <TypographyStyled variant="h5">Galeria de imagens</TypographyStyled>
+            <Grid>
+              {project.images.gallery.map((item, index) => (
+                <Grid sm={12} key={index}>
+                  <Image src={item} />
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
         </Grid>
-      </Box>
+      </StyledContainer>
     </Layout>
   )
 }
