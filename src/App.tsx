@@ -2,10 +2,11 @@ import React from 'react'
 import { Router, Switch } from 'wouter'
 
 import Home from './pages/Home'
+import Project from './pages/Project'
 
 export const routes = {
   home: '/',
-  project: '/project',
+  project: '/project/:projectName',
 }
 
 const App: React.FC = () => {
@@ -13,7 +14,7 @@ const App: React.FC = () => {
     <Router>
       <Switch>
         <Home path={routes.home} />
-        <div></div>
+        <Project path={routes.project} />
       </Switch>
     </Router>
   )

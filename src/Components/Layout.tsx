@@ -16,6 +16,7 @@ const drawerWidth = '50px'
 
 const useStyles = makeStyles({
   container: {
+    padding: 5,
     marginLeft: drawerWidth,
   },
   listIcon: {

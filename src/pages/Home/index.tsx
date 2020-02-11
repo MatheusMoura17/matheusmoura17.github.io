@@ -9,9 +9,6 @@ import projects from '../../services/projects'
 import Header from './Header'
 
 const useStyles = makeStyles({
-  root: {
-    padding: 5,
-  },
   projects: {
     padding: '0 5%',
   },
@@ -25,12 +22,12 @@ const Home: React.FC<IHomeProps> = () => {
   const classes = useStyles()
   return (
     <Layout>
-      <Box className={classes.root}>
+      <Box>
         <Grid className={classes.projects} container spacing={4}>
           <Grid item xs={12} style={{ paddingBottom: 0 }}>
             <Header />
           </Grid>
-          {projects.map((project, index) => (
+          {Object.values(projects).map((project, index) => (
             <Grid key={index} item lg={2} md={3} sm={6} xs={6}>
               <ProjectCard
                 name={project.name}
