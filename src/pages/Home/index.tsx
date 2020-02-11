@@ -27,7 +27,7 @@ const Home: React.FC<IHomeProps> = () => {
     <Layout>
       <Box className={classes.root}>
         <Grid className={classes.projects} container spacing={4}>
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{ paddingBottom: 0 }}>
             <Header />
           </Grid>
           {projects.map((project, index) => (

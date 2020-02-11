@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography'
 
 import MenuIcon from '@material-ui/icons/Menu'
 import ExpandLessIcon from '@material-ui/icons/ExpandLess'
+import IconButton from '@material-ui/core/IconButton'
 
 const ListStyled = styled(List)`
   display: flex;
@@ -24,7 +25,14 @@ const ListItemTextStyled = styled(ListItemText)`
   }
 `
 const TypographyStyled = styled(Typography)`
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Satisfy', cursive;
+`
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `
 
 /**
@@ -34,55 +42,54 @@ const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false)
 
   /** Lista de items que serão renderizados no menu */
-  const getMenuItems = (isMobile: boolean) => (
+  const menuItems = (
     <>
-      {isMobile && (
-        <ListItem button onClick={() => setMenuOpen(prev => !prev)}>
-          <ListItemTextStyled>
-            {isMenuOpen ? <ExpandLessIcon /> : <MenuIcon />}
-          </ListItemTextStyled>
-        </ListItem>
-      )}
-      {(!isMobile || isMenuOpen) && (
-        <>
-          <ListItem button>
-            <ListItemTextStyled primary="Games" />
-          </ListItem>
-          <ListItem button>
-            <ListItemTextStyled primary="UI/UX" />
-          </ListItem>
-          <ListItem button>
-            <ListItemTextStyled primary="Web Design" />
-          </ListItem>
-          <ListItem button>
-            <ListItemTextStyled primary="Timeline" />
-          </ListItem>
-          <ListItem button selected>
-            <ListItemTextStyled primary="All jobs" />
-          </ListItem>
-        </>
-      )}
+      <ListItem button>
+        <ListItemTextStyled primary="Games" />
+      </ListItem>
+      <ListItem button>
+        <ListItemTextStyled primary="UI/UX" />
+      </ListItem>
+      <ListItem button>
+        <ListItemTextStyled primary="Web Design" />
+      </ListItem>
+      <ListItem button>
+        <ListItemTextStyled primary="Timeline" />
+      </ListItem>
+      <ListItem button selected>
+        <ListItemTextStyled primary="All jobs" />
+      </ListItem>
     </>
   )
 
   return (
-    <Grid container spacing={2}>
+    <Grid container>
       <Grid item lg={6} md={4} sm={12} xs={12}>
-        <TypographyStyled variant="h3">
-          &#123; Matheus Moura &#125;
-        </TypographyStyled>
+        <Flex>
+          <TypographyStyled variant="h4">Matheus Moura</TypographyStyled>
+          <Hidden mdUp>
+            <IconButton size="small" onClick={() => setMenuOpen(prev => !prev)}>
+              {isMenuOpen ? <ExpandLessIcon /> : <MenuIcon />}
+            </IconButton>
+          </Hidden>
+        </Flex>
       </Grid>
-      <Grid item lg={6} md={8} sm={12} xs={12}>
-        {/** Menu desktop */}
-        <Hidden smDown>
-          <ListStyled>{getMenuItems(false)}</ListStyled>
-        </Hidden>
 
-        {/** Menu mobile */}
-        <Hidden mdUp>
-          <List>{getMenuItems(true)}</List>
-        </Hidden>
-      </Grid>
+      {/** Menu desktop */}
+      <Hidden smDown>
+        <Grid item lg={6} md={8} sm={12} xs={12}>
+          <ListStyled>{menuItems}</ListStyled>
+        </Grid>
+      </Hidden>
+
+      {/** Menu mobile */}
+      <Hidden mdUp>
+        {isMenuOpen && (
+          <Grid item lg={6} md={8} sm={12} xs={12}>
+            <List>{menuItems}</List>
+          </Grid>
+        )}
+      </Hidden>
     </Grid>
   )
 }
