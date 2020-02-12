@@ -2,6 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 import { Typography } from '@material-ui/core'
+import { Link } from 'wouter'
 
 const overlayCircle = require('./overlay-01.svg')
 const overlayHexagon = require('./overlay-02.svg')
@@ -72,11 +73,13 @@ const ProjectCard: React.FC<IProjectCardProps> = ({
   return (
     <Root>
       <Content>
-        <ProjectCardStyled image={image}>
-          <ProjectCardInfo overlay={overlay}>
-            <Typography variant="body1">{name.toUpperCase()}</Typography>
-          </ProjectCardInfo>
-        </ProjectCardStyled>
+        <Link href={link}>
+          <ProjectCardStyled image={image}>
+            <ProjectCardInfo overlay={overlay}>
+              <Typography variant="body1">{name.toUpperCase()}</Typography>
+            </ProjectCardInfo>
+          </ProjectCardStyled>
+        </Link>
       </Content>
     </Root>
   )

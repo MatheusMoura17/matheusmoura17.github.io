@@ -27,12 +27,12 @@ const Home: React.FC<IHomeProps> = () => {
           <Grid item xs={12} style={{ paddingBottom: 0 }}>
             <Header />
           </Grid>
-          {Object.values(projects).map((project, index) => (
-            <Grid key={index} item lg={2} md={3} sm={6} xs={6}>
+          {Object.entries(projects).map(([key, project]) => (
+            <Grid key={key} item lg={2} md={3} sm={6} xs={6}>
               <ProjectCard
                 name={project.name}
                 image={project.images[0]}
-                link=""
+                link={`/project/${key}`}
                 overlay={Math.random() * 2 > 1 ? 'circle' : 'hexagon'}
               />
             </Grid>
