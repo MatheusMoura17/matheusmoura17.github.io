@@ -87018,7 +87018,465 @@ exports.default = YouTubeEmbed;
 module.exports = exports['default'];
 
 
-},{"babel-runtime/helpers/extends":"../node_modules/babel-runtime/helpers/extends.js","babel-runtime/helpers/objectWithoutProperties":"../node_modules/babel-runtime/helpers/objectWithoutProperties.js","babel-runtime/helpers/classCallCheck":"../node_modules/babel-runtime/helpers/classCallCheck.js","babel-runtime/helpers/createClass":"../node_modules/babel-runtime/helpers/createClass.js","babel-runtime/helpers/possibleConstructorReturn":"../node_modules/babel-runtime/helpers/possibleConstructorReturn.js","babel-runtime/helpers/inherits":"../node_modules/babel-runtime/helpers/inherits.js","react":"../node_modules/react/index.js"}],"pages/Project/index.tsx":[function(require,module,exports) {
+},{"babel-runtime/helpers/extends":"../node_modules/babel-runtime/helpers/extends.js","babel-runtime/helpers/objectWithoutProperties":"../node_modules/babel-runtime/helpers/objectWithoutProperties.js","babel-runtime/helpers/classCallCheck":"../node_modules/babel-runtime/helpers/classCallCheck.js","babel-runtime/helpers/createClass":"../node_modules/babel-runtime/helpers/createClass.js","babel-runtime/helpers/possibleConstructorReturn":"../node_modules/babel-runtime/helpers/possibleConstructorReturn.js","babel-runtime/helpers/inherits":"../node_modules/babel-runtime/helpers/inherits.js","react":"../node_modules/react/index.js"}],"../node_modules/react-unity-webgl/distribution/services/LoggingService.js":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var LoggingService = /** @class */ (function () {
+    function LoggingService() {
+    }
+    LoggingService.prototype.warnUnityContentRemoveNotAvailable = function (additionalDetials) {
+        this.warn("Your version of Unity does not support unloading the WebGL Player.", "This preverts ReactUnityWebGL from unmounting this component properly.", "Please consider updating to Unity 2019.1 or newer, or reload the page", "to free the WebGL Player from the memory. See the follow link for more details:", "https://github.com/elraccoone/react-unity-webgl/issues/22", additionalDetials);
+    };
+    LoggingService.prototype.errorUnityLoaderNotFound = function (additionalDetials) {
+        this.error("Unable to use the Unity Loader, please make sure you've imported", "the Unity Loader the correct way. You might have entered an incorrect", "path to the UnityLoader.js. The path is not relative to your bundle,", "but to your index html file. See the follow link for more details: ", "https://github.com/elraccoone/react-unity-webgl/issues/31", additionalDetials);
+    };
+    LoggingService.prototype.warn = function () {
+        var messages = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            messages[_i] = arguments[_i];
+        }
+        console.warn(messages.filter(function (_) { return typeof _ !== "undefined"; }).join(" "));
+    };
+    LoggingService.prototype.error = function () {
+        var messages = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            messages[_i] = arguments[_i];
+        }
+        console.error(messages.filter(function (_) { return typeof _ !== "undefined"; }).join(" "));
+    };
+    return LoggingService;
+}());
+exports.loggingService = new LoggingService();
+
+},{}],"../node_modules/react-unity-webgl/distribution/services/UnityLoaderService.js":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var LoggingService_1 = require("./LoggingService");
+var UnityLoaderService = /** @class */ (function () {
+    function UnityLoaderService() {
+        /**
+         * Reference to the document head.
+         * @type {HTMLHeadElement}
+         * @private
+         */
+        this.documentHead = document.getElementsByTagName("head")[0];
+    }
+    /**
+     * Appends the Unity loader script to the window. When it's loaded a callback will
+     * be triggered. NOTE: This can't be a promisse due to JavaScript compatibilty.
+     * @param {string} source the path to the Unity loader file
+     * @param {Function} onLoad when the script is loaded
+     * @public
+     */
+    UnityLoaderService.prototype.append = function (source, onLoad) {
+        var _this = this;
+        if (typeof this.unityLoaderScript !== "undefined")
+            if (source === this.unityLoaderScript.src) {
+                return onLoad();
+            }
+            else {
+                this.unityLoaderScript.remove();
+            }
+        window
+            .fetch(source)
+            .then(function (_response) {
+            if (_response.status >= 400)
+                return LoggingService_1.loggingService.errorUnityLoaderNotFound(_response.status);
+            _response
+                .text()
+                .then(function (_text) {
+                if (_text.trim().charAt(0) === "<")
+                    return LoggingService_1.loggingService.errorUnityLoaderNotFound("error doc");
+                _this.unityLoaderScript = document.createElement("script");
+                _this.unityLoaderScript.type = "text/javascript";
+                _this.unityLoaderScript.async = true;
+                _this.unityLoaderScript.src = source;
+                _this.unityLoaderScript.onload = function () {
+                    if (typeof window.UnityLoader === "undefined")
+                        return LoggingService_1.loggingService.errorUnityLoaderNotFound();
+                    onLoad();
+                };
+                _this.documentHead.appendChild(_this.unityLoaderScript);
+            })
+                .catch(function (_reason) { return LoggingService_1.loggingService.errorUnityLoaderNotFound(_reason); });
+        })
+            .catch(function (_reason) { return LoggingService_1.loggingService.errorUnityLoaderNotFound(_reason); });
+    };
+    return UnityLoaderService;
+}());
+exports.default = UnityLoaderService;
+
+},{"./LoggingService":"../node_modules/react-unity-webgl/distribution/services/LoggingService.js"}],"../node_modules/react-unity-webgl/distribution/declarations/UnityLoader.js":[function(require,module,exports) {
+"use strict";
+
+},{}],"../node_modules/react-unity-webgl/distribution/declarations/UnityInstance.js":[function(require,module,exports) {
+"use strict";
+
+},{}],"../node_modules/react-unity-webgl/distribution/declarations/ReactUnityWebgl.js":[function(require,module,exports) {
+"use strict";
+
+},{}],"../node_modules/react-unity-webgl/distribution/components/Unity.js":[function(require,module,exports) {
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __importStar(require("react"));
+var UnityLoaderService_1 = __importDefault(require("../services/UnityLoaderService"));
+require("../declarations/UnityLoader");
+require("../declarations/UnityInstance");
+require("../declarations/ReactUnityWebgl");
+var Unity = /** @class */ (function (_super) {
+    __extends(Unity, _super);
+    /**
+     * Initialized the component.
+     * @param {IUnityProps} props
+     */
+    function Unity(props) {
+        var _this = _super.call(this, props) || this;
+        /**
+         * The component state.
+         * @type {IUnityState}
+         * @public
+         */
+        _this.state = {};
+        _this.unityLoaderService = new UnityLoaderService_1.default();
+        _this.onWindowResizeBinding = _this.onWindowResize.bind(_this);
+        _this.unityContent = _this.props.unityContent;
+        _this.unityContent.setComponentInstance(_this);
+        return _this;
+    }
+    /**
+     * An event that is triggered by the Unity player. This tracks
+     * the loading progression of the player. It will send '1' when
+     * the loading is completed.
+     * @param {UnityInstance} unityInstance
+     * @param {number} progression
+     * @private
+     */
+    Unity.prototype.onProgress = function (unityInstance, progression) {
+        this.unityContent.triggerUnityEvent("progress", progression);
+        if (progression === 1)
+            this.unityContent.triggerUnityEvent("loaded");
+    };
+    /**
+     * When the window is resized.
+     */
+    Unity.prototype.onWindowResize = function () {
+        if (this.unityContent.unityConfig.adjustOnWindowResize === true) {
+            this.unityContent.triggerUnityEvent("resized");
+            this.adjustCanvasToContainer();
+        }
+    };
+    /**
+     * Since the Unity canvas itself does not respond to the resizing
+     * of it's container we have to manually do this. A width and height
+     * of 100% does not seem to work, so we have to fetch it's parent's
+     * size to adject the canvas.
+     * @private
+     */
+    Unity.prototype.adjustCanvasToContainer = function () {
+        if (typeof this.htmlElement !== "undefined") {
+            var _width = this.htmlElement.offsetWidth;
+            var _height = this.htmlElement.offsetHeight;
+            var _canvas = this.htmlElement.getElementsByTagName("canvas")[0];
+            if (typeof _canvas !== "undefined" && _canvas.height !== _height)
+                _canvas.height = _height;
+            if (typeof _canvas !== "undefined" && _canvas.width !== _width)
+                _canvas.width = _width;
+        }
+    };
+    /**
+     * Initialzied the Unity player when the component is mounted.
+     * @public
+     */
+    Unity.prototype.componentDidMount = function () {
+        var _this = this;
+        window.addEventListener("resize", this.onWindowResizeBinding);
+        // prettier-ignore
+        this.unityLoaderService.append(this.props.unityContent.unityLoaderJsPath, function () {
+            UnityLoader.Error.handler = function (_message) {
+                _this.unityContent.triggerUnityEvent("error", _message);
+                console.error("React Unity WebGL", _message);
+            };
+            _this.unityContent.setUnityInstance(UnityLoader.instantiate("__ReactUnityWebGL_" + _this.props.unityContent.uniqueID + "__", _this.props.unityContent.buildJsonPath, {
+                onProgress: _this.onProgress.bind(_this),
+                Module: _this.props.unityContent.unityConfig.modules,
+                width: "100%",
+                height: "100%"
+            }));
+        });
+    };
+    /**
+     * Will remove event listeners and clean up systems when the
+     * component is about to unmount.
+     * @public
+     */
+    Unity.prototype.componentWillUnmount = function () {
+        this.unityContent.remove();
+        window.removeEventListener("resize", this.onWindowResizeBinding);
+    };
+    /**
+     * Renders the unity wrapper and player.
+     * @returns {React.ReactNode} element
+     * @public
+     */
+    Unity.prototype.render = function () {
+        var _this = this;
+        return React.createElement("div", {
+            className: this.props.className || "",
+            ref: function (ref) { return (_this.htmlElement = ref); },
+            id: "__ReactUnityWebGL_" + this.props.unityContent.uniqueID + "__",
+            style: {
+                width: this.props.width || "800px",
+                height: this.props.height || "600px"
+            }
+        });
+    };
+    return Unity;
+}(React.Component));
+exports.default = Unity;
+
+},{"react":"../node_modules/react/index.js","../services/UnityLoaderService":"../node_modules/react-unity-webgl/distribution/services/UnityLoaderService.js","../declarations/UnityLoader":"../node_modules/react-unity-webgl/distribution/declarations/UnityLoader.js","../declarations/UnityInstance":"../node_modules/react-unity-webgl/distribution/declarations/UnityInstance.js","../declarations/ReactUnityWebgl":"../node_modules/react-unity-webgl/distribution/declarations/ReactUnityWebgl.js"}],"../node_modules/react-unity-webgl/distribution/UnityContent.js":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+require("./declarations/UnityLoader");
+require("./declarations/UnityInstance");
+require("./declarations/ReactUnityWebgl");
+var LoggingService_1 = require("./services/LoggingService");
+var UnityContent = /** @class */ (function () {
+    /**
+     * Creates a new Unity content object. This object can be used
+     * @param {string} buildJsonPath the relative path to the build json file generated by Unity.
+     * @param {string} unityLoaderJsPath the relative path to the unity loader javascript file.
+     * @param {IUnityConfig} unityConfig the Unity configuration that will be used to start the player.
+     */
+    function UnityContent(buildJsonPath, unityLoaderJsPath, unityConfig) {
+        var _unityConfig = unityConfig || {};
+        this.buildJsonPath = buildJsonPath;
+        this.unityLoaderJsPath = unityLoaderJsPath;
+        this.uniqueID = ++UnityContent.uniqueID;
+        this.unityEvents = [];
+        this.unityConfig = {
+            modules: _unityConfig.modules || {},
+            unityVersion: _unityConfig.unityVersion || "undefined",
+            adjustOnWindowResize: _unityConfig.adjustOnWindowResize,
+            id: _unityConfig.id || "nill"
+        };
+        if (typeof window.ReactUnityWebGL === "undefined")
+            window.ReactUnityWebGL = {};
+    }
+    /**
+     * Binds a unity component to this content.
+     * @param unityComponentInstance the unity component that will be binded to this content.
+     * @public
+     */
+    UnityContent.prototype.setComponentInstance = function (unityComponentInstance) {
+        this.unityComponent = unityComponentInstance;
+    };
+    /**
+     * Binds a unity player to this content.
+     * @param unityPlayerInstance the unity component that will be binded to this content.
+     * @public
+     */
+    UnityContent.prototype.setUnityInstance = function (unityInstance) {
+        this.unityInstance = unityInstance;
+    };
+    /**
+     * Sets the unity players fullscreen mode.
+     * @param {boolean} fullscreen
+     * @public
+     */
+    UnityContent.prototype.setFullscreen = function (fullscreen) {
+        if (this.unityInstance != null) {
+            this.unityInstance.SetFullscreen(fullscreen === true ? 1 : 0);
+        }
+    };
+    /**
+     * Quits the Unity Instance and removes it from memory.
+     */
+    UnityContent.prototype.remove = function () {
+        var _this = this;
+        if (typeof this.unityInstance !== "undefined" &&
+            typeof this.unityInstance.Quit === "function")
+            return this.unityInstance.Quit(function () {
+                _this.triggerUnityEvent("quitted");
+                _this.unityInstance = undefined;
+            });
+        return LoggingService_1.loggingService.warnUnityContentRemoveNotAvailable();
+    };
+    /**
+     * Sends an event to the Unity player that will trigger a function.
+     * @param {string} gameObjectName the name of the game object in your Unity scene.
+     * @param {string} methodName the name of the public method on the game object.
+     * @param {any} parameter an optional parameter to pass along to the method.
+     * @public
+     */
+    UnityContent.prototype.send = function (gameObjectName, methodName, parameter) {
+        if (this.unityInstance != null) {
+            if (typeof parameter === "undefined") {
+                this.unityInstance.SendMessage(gameObjectName, methodName);
+            }
+            else {
+                this.unityInstance.SendMessage(gameObjectName, methodName, parameter);
+            }
+        }
+    };
+    /**
+     * Registers an event listener for the Unity player. These can be
+     * system events like when the player is initialized or loader and
+     * your custom events from Unity.
+     * @param {string} eventName the event name
+     * @param {Function} eventCallback the event function
+     * @returns {any} The Function
+     * @public
+     */
+    UnityContent.prototype.on = function (eventName, eventCallback) {
+        this.unityEvents.push({
+            eventName: eventName,
+            eventCallback: eventCallback
+        });
+        window.ReactUnityWebGL[eventName] = function (parameter) {
+            return eventCallback(parameter);
+        };
+    };
+    /**
+     * Triggers an event that has been registered by the on
+     * function.
+     * @param {string} eventName the event name
+     * @param {Function} eventValue the event value
+     * @public
+     */
+    UnityContent.prototype.triggerUnityEvent = function (eventName, eventValue) {
+        for (var _i = 0; _i < this.unityEvents.length; _i++)
+            if (this.unityEvents[_i].eventName === eventName)
+                this.unityEvents[_i].eventCallback(eventValue);
+    };
+    /**
+     * the statis unique ID keeps track of the
+     * unique ID's made by other instances.
+     * @type {number}
+     * @static
+     * @public
+     */
+    UnityContent.uniqueID = 0;
+    return UnityContent;
+}());
+exports.default = UnityContent;
+
+},{"./declarations/UnityLoader":"../node_modules/react-unity-webgl/distribution/declarations/UnityLoader.js","./declarations/UnityInstance":"../node_modules/react-unity-webgl/distribution/declarations/UnityInstance.js","./declarations/ReactUnityWebgl":"../node_modules/react-unity-webgl/distribution/declarations/ReactUnityWebgl.js","./services/LoggingService":"../node_modules/react-unity-webgl/distribution/services/LoggingService.js"}],"../node_modules/react-unity-webgl/distribution/Exports.js":[function(require,module,exports) {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var Unity_1 = __importDefault(require("./components/Unity"));
+var UnityContent_1 = __importDefault(require("./UnityContent"));
+exports.UnityContent = UnityContent_1.default;
+exports.default = Unity_1.default;
+
+},{"./components/Unity":"../node_modules/react-unity-webgl/distribution/components/Unity.js","./UnityContent":"../node_modules/react-unity-webgl/distribution/UnityContent.js"}],"Components/UnityDialog/index.tsx":[function(require,module,exports) {
+"use strict";
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var react_1 = __importStar(require("react"));
+
+var react_unity_webgl_1 = __importStar(require("react-unity-webgl"));
+
+var Dialog_1 = __importDefault(require("@material-ui/core/Dialog"));
+
+var DialogActions_1 = __importDefault(require("@material-ui/core/DialogActions"));
+
+var DialogContent_1 = __importDefault(require("@material-ui/core/DialogContent"));
+
+var Button_1 = __importDefault(require("@material-ui/core/Button"));
+
+var core_1 = require("@material-ui/core");
+
+var UnityDialog = function UnityDialog(_a) {
+  var open = _a.open,
+      onClose = _a.onClose,
+      gameName = _a.gameName;
+
+  var _b = react_1.useState(false),
+      isOpen = _b[0],
+      setIsOpen = _b[1];
+
+  var mainRef = react_1.useRef(null);
+  var unityContent = react_1.useMemo(function () {
+    return new react_unity_webgl_1.UnityContent("/builds/" + gameName + "/" + gameName + ".json", "/builds/" + gameName + "/UnityLoader.js");
+  }, [gameName]);
+  react_1.useEffect(function () {
+    setIsOpen(open);
+  }, [open]);
+
+  var handleFullScreenClicked = function handleFullScreenClicked() {
+    var _a, _b;
+
+    (_b = (_a = mainRef) === null || _a === void 0 ? void 0 : _a.current) === null || _b === void 0 ? void 0 : _b.requestFullscreen();
+  };
+
+  var handleClose = function handleClose() {
+    setIsOpen(false);
+    onClose();
+  };
+
+  return react_1.default.createElement(Dialog_1.default, {
+    onClose: handleClose,
+    open: isOpen,
+    maxWidth: "lg"
+  }, react_1.default.createElement(DialogContent_1.default, null, react_1.default.createElement("div", {
+    ref: mainRef
+  }, react_1.default.createElement(react_unity_webgl_1.default, {
+    unityContent: unityContent
+  })), react_1.default.createElement(core_1.Typography, null, "Pressione W A S D para andar e B para posicionar uma dinamite")), react_1.default.createElement(DialogActions_1.default, null, react_1.default.createElement(Button_1.default, {
+    onClick: handleFullScreenClicked
+  }, "Tela cheia"), react_1.default.createElement(Button_1.default, {
+    onClick: handleClose
+  }, "Fechar")));
+};
+
+exports.default = UnityDialog;
+},{"react":"../node_modules/react/index.js","react-unity-webgl":"../node_modules/react-unity-webgl/distribution/Exports.js","@material-ui/core/Dialog":"../node_modules/@material-ui/core/esm/Dialog/index.js","@material-ui/core/DialogActions":"../node_modules/@material-ui/core/esm/DialogActions/index.js","@material-ui/core/DialogContent":"../node_modules/@material-ui/core/esm/DialogContent/index.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"pages/Project/index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __makeTemplateObject = this && this.__makeTemplateObject || function (cooked, raw) {
@@ -87033,6 +87491,16 @@ var __makeTemplateObject = this && this.__makeTemplateObject || function (cooked
   return cooked;
 };
 
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -87043,7 +87511,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var react_1 = __importDefault(require("react"));
+var react_1 = __importStar(require("react"));
 
 var wouter_1 = require("wouter");
 
@@ -87057,7 +87525,11 @@ var react_youtube_embed_1 = __importDefault(require("react-youtube-embed"));
 
 var Container_1 = __importDefault(require("@material-ui/core/Container"));
 
+var Button_1 = __importDefault(require("@material-ui/core/Button"));
+
 var Layout_1 = __importDefault(require("../../Components/Layout"));
+
+var UnityDialog_1 = __importDefault(require("../../Components/UnityDialog"));
 
 var App_1 = require("../../App");
 
@@ -87068,8 +87540,12 @@ var TypographyStyled = styled_components_1.default(Typography_1.default)(templat
 var Image = styled_components_1.default.img(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  width: 100%;\n"], ["\n  width: 100%;\n"])));
 
 var Project = function Project() {
-  var _a = wouter_1.useRoute(App_1.routes.project),
-      params = _a[1];
+  var _a = react_1.useState(false),
+      unityOpen = _a[0],
+      setUnityOpen = _a[1];
+
+  var _b = wouter_1.useRoute(App_1.routes.project),
+      params = _b[1];
 
   var project = projects_1.default[params.projectName];
   return react_1.default.createElement(Layout_1.default, null, react_1.default.createElement(StyledContainer, {
@@ -87086,7 +87562,27 @@ var Project = function Project() {
     },
     variant: "h3",
     gutterBottom: true
-  }, project.name), react_1.default.createElement(TypographyStyled, null, project.describe)), project.video && react_1.default.createElement(Grid_1.default, {
+  }, project.name), react_1.default.createElement(TypographyStyled, null, project.describe)), react_1.default.createElement(Grid_1.default, {
+    item: true,
+    sm: 12
+  }, react_1.default.createElement(TypographyStyled, {
+    variant: "h5"
+  }, "Op\xE7\xF5es de acesso"), project.playStoreLink && react_1.default.createElement(Button_1.default, {
+    onClick: function onClick() {
+      return window.open(project.playStoreLink);
+    },
+    color: "primary",
+    variant: "contained",
+    style: {
+      marginRight: 5
+    }
+  }, "Play Store"), react_1.default.createElement(Button_1.default, {
+    onClick: function onClick() {
+      return setUnityOpen(true);
+    },
+    color: "primary",
+    variant: "contained"
+  }, "Jogar Online")), project.video && react_1.default.createElement(Grid_1.default, {
     item: true,
     sm: 12
   }, react_1.default.createElement(TypographyStyled, {
@@ -87098,29 +87594,28 @@ var Project = function Project() {
     sm: 12
   }, react_1.default.createElement(TypographyStyled, {
     variant: "h5"
-  }, "Op\xE7\xF5es de acesso"), project.playStoreLink && react_1.default.createElement("a", {
-    target: "blank",
-    href: project.playStoreLink
-  }, react_1.default.createElement("img", {
-    src: "/images/others/play-store.png"
-  }))), react_1.default.createElement(Grid_1.default, {
-    item: true,
-    sm: 12
-  }, react_1.default.createElement(TypographyStyled, {
-    variant: "h5"
-  }, "Galeria de imagens"), react_1.default.createElement(Grid_1.default, null, project.images.map(function (item, index) {
+  }, "Galeria de imagens"), react_1.default.createElement(Grid_1.default, {
+    container: true
+  }, project.images.map(function (item, index) {
     return react_1.default.createElement(Grid_1.default, {
+      item: true,
       sm: 12,
       key: index
     }, react_1.default.createElement(Image, {
       src: item
     }));
-  }))))));
+  }))), react_1.default.createElement(UnityDialog_1.default, {
+    open: unityOpen,
+    onClose: function onClose() {
+      return setUnityOpen(false);
+    },
+    gameName: params.projectName
+  }))));
 };
 
 exports.default = Project;
 var templateObject_1, templateObject_2, templateObject_3;
-},{"react":"../node_modules/react/index.js","wouter":"../node_modules/wouter/index.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","react-youtube-embed":"../node_modules/react-youtube-embed/dist/index.js","@material-ui/core/Container":"../node_modules/@material-ui/core/esm/Container/index.js","../../Components/Layout":"Components/Layout.tsx","../../App":"App.tsx","../../services/projects":"services/projects/index.ts"}],"App.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","wouter":"../node_modules/wouter/index.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","react-youtube-embed":"../node_modules/react-youtube-embed/dist/index.js","@material-ui/core/Container":"../node_modules/@material-ui/core/esm/Container/index.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","../../Components/Layout":"Components/Layout.tsx","../../Components/UnityDialog":"Components/UnityDialog/index.tsx","../../App":"App.tsx","../../services/projects":"services/projects/index.ts"}],"App.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -87204,7 +87699,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60142" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58967" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
