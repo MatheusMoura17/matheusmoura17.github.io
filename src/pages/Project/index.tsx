@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useRoute } from 'wouter'
 import styled from 'styled-components'
 
@@ -6,8 +6,10 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import YouTube from 'react-youtube-embed'
 import Container from '@material-ui/core/Container'
+import Button from '@material-ui/core/Button'
 
 import Layout from '../../Components/Layout'
+import UnityDialog from '../../Components/UnityDialog'
 import { routes } from '../../App'
 import projects from '../../services/projects'
 
@@ -29,6 +31,7 @@ interface IHomeProps {
 }
 
 const Project: React.FC<IHomeProps> = () => {
+  const [unityOpen, setUnityOpen] = useState(false)
   const [, params] = useRoute(routes.project)
   const project = projects[params.projectName]
 
@@ -48,6 +51,28 @@ const Project: React.FC<IHomeProps> = () => {
             <TypographyStyled>{project.describe}</TypographyStyled>
           </Grid>
 
+          {/** Opções de acesso */}
+          <Grid item sm={12}>
+            <TypographyStyled variant="h5">Opções de acesso</TypographyStyled>
+            {project.playStoreLink && (
+              <Button
+                onClick={() => window.open(project.playStoreLink)}
+                color="primary"
+                variant="contained"
+                style={{ marginRight: 5 }}
+              >
+                Play Store
+              </Button>
+            )}
+            <Button
+              onClick={() => setUnityOpen(true)}
+              color="primary"
+              variant="contained"
+            >
+              Jogar Online
+            </Button>
+          </Grid>
+
           {/** Vídeo demonstrativo */}
           {project.video && (
             <Grid item sm={12}>
@@ -58,27 +83,24 @@ const Project: React.FC<IHomeProps> = () => {
             </Grid>
           )}
 
-          {/** Opções de acesso */}
-          <Grid item sm={12}>
-            <TypographyStyled variant="h5">Opções de acesso</TypographyStyled>
-            {project.playStoreLink && (
-              <a target="blank" href={project.playStoreLink}>
-                <img src="/images/others/play-store.png"></img>
-              </a>
-            )}
-          </Grid>
-
           {/** Galeria de imagens */}
           <Grid item sm={12}>
             <TypographyStyled variant="h5">Galeria de imagens</TypographyStyled>
-            <Grid>
+            <Grid container>
               {project.images.map((item, index) => (
-                <Grid sm={12} key={index}>
+                <Grid item sm={12} key={index}>
                   <Image src={item} />
                 </Grid>
               ))}
             </Grid>
           </Grid>
+
+          {/** Dialogs */}
+          <UnityDialog
+            open={unityOpen}
+            onClose={() => setUnityOpen(false)}
+            gameName={params.projectName}
+          />
         </Grid>
       </StyledContainer>
     </Layout>
