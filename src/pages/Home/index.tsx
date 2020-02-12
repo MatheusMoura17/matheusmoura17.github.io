@@ -10,6 +10,7 @@ import Header from './Header'
 
 const useStyles = makeStyles({
   projects: {
+    width: '100%',
     padding: '0 5%',
   },
 })
