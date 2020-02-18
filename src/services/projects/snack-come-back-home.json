@@ -1,0 +1,14 @@
+{
+    "name": "Snack",
+    "fullName": "Snack Come Back Home",
+    "describe": "Remake do clássico jogo da cobrinha (snake)",
+    "createAt": "01/11/2016",
+    "images": [
+        "/images/snack-come-back-home/image (0).png",
+        "/images/snack-come-back-home/image (1).png",
+        "/images/snack-come-back-home/image (2).png",
+        "/images/snack-come-back-home/image (3).png"
+    ],
+    "video": "UCgOprj8PBj",
+    "skills": ["Game Design", "UI", "Development", "Game Art"]
+}

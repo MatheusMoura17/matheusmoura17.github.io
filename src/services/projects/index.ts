@@ -11,6 +11,7 @@ const oPequenoUrubu = require('./o-pequeno-urubu.json') as IProject
 const enemRunner = require('./enem-runner.json') as IProject
 const gremlinJump = require('./gremlin-jump.json') as IProject
 const mulherMelancia = require('./mulher-melancia.json') as IProject
+const snackComeBackHome = require('./snack-come-back-home.json') as IProject
 
 const projects: Record<string, IProject> = {
   'west-combat': westCombat,
@@ -26,6 +27,7 @@ const projects: Record<string, IProject> = {
   'o-pequeno-urubu': oPequenoUrubu,
   'enem-runner': enemRunner,
   'gremlin-jump': gremlinJump,
+  'snack-come-back-home': snackComeBackHome,
 }
 
 export default projects
