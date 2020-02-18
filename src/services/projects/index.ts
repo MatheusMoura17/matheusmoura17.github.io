@@ -10,10 +10,12 @@ const speedBall3d = require('./speed-ball-3d.json') as IProject
 const oPequenoUrubu = require('./o-pequeno-urubu.json') as IProject
 const enemRunner = require('./enem-runner.json') as IProject
 const gremlinJump = require('./gremlin-jump.json') as IProject
+const mulherMelancia = require('./mulher-melancia.json') as IProject
 
 const projects: Record<string, IProject> = {
   'west-combat': westCombat,
   wbolh,
+  'mulher-melancia': mulherMelancia,
   'recife-adventures': recifeAdventures,
   'salve-recife': salveRecife,
   'star-donkeys': starDonkeys,
