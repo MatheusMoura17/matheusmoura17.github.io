@@ -31,7 +31,7 @@ interface IHomeProps {
 }
 
 const Project: React.FC<IHomeProps> = () => {
-  const [unityOpen, setUnityOpen] = useState(false)
+  const [gameOpen, setGameOpen] = useState(false)
   const [, params] = useRoute(routes.project)
   const project = projects[params.projectName]
 
@@ -65,7 +65,7 @@ const Project: React.FC<IHomeProps> = () => {
               </Button>
             )}
             <Button
-              onClick={() => setUnityOpen(true)}
+              onClick={() => setGameOpen(true)}
               color="primary"
               variant="contained"
             >
@@ -97,8 +97,8 @@ const Project: React.FC<IHomeProps> = () => {
 
           {/** Dialogs */}
           <UnityDialog
-            open={unityOpen}
-            onClose={() => setUnityOpen(false)}
+            open={gameOpen}
+            onClose={() => setGameOpen(false)}
             gameName={params.projectName}
           />
         </Grid>

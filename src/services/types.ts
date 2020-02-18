@@ -15,4 +15,5 @@ interface IProject {
   video?: string
   /** Link do projeto na play store */
   playStoreLink?: string
+  gameView?: 'unity' | 'html'
 }
