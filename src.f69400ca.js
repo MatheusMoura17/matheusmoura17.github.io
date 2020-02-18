@@ -85143,6 +85143,7 @@ module.exports = {
   "describe": "Um free for all multiplayer online, o objetivo foi fazer um jogo divertido para jogar com os amigos, sem game modes ou restrições. Para este jogo foi utilizado o framework PhotonEngine.",
   "createAt": "11/03/2017",
   "images": ["/images/west-combat/image (0).png", "/images/west-combat/image (1).png", "/images/west-combat/image (2).png", "/images/west-combat/image (3).png", "/images/west-combat/image (4).png", "/images/west-combat/image (5).png", "/images/west-combat/image (6).png"],
+  "video": "T3oVRHZlqFg",
   "skills": ["Game Design", "UI", "Development"]
 };
 },{}],"services/projects/wbolh.json":[function(require,module,exports) {
@@ -85256,6 +85257,26 @@ module.exports = {
   "playStoreLink": "https://play.google.com/store/apps/details?id=com.homyapps.gremlinjump",
   "skills": ["Game Design", "UI", "Development", "Game Art"]
 };
+},{}],"services/projects/mulher-melancia.json":[function(require,module,exports) {
+module.exports = {
+  "name": "Mulher Melancia",
+  "fullName": "Mulher Melancia",
+  "describe": "Projeto free lancer",
+  "createAt": "11/03/2017",
+  "images": ["/images/mulher-melancia/image (0).png", "/images/mulher-melancia/image (1).png", "/images/mulher-melancia/image (2).png", "/images/mulher-melancia/image (3).png", "/images/mulher-melancia/image (4).png", "/images/mulher-melancia/image (5).png", "/images/mulher-melancia/image (6).png"],
+  "video": "DOgr4utgbHM",
+  "skills": ["Game Design", "UI", "Development"]
+};
+},{}],"services/projects/snack-come-back-home.json":[function(require,module,exports) {
+module.exports = {
+  "name": "Snack",
+  "fullName": "Snack Come Back Home",
+  "describe": "Remake do clássico jogo da cobrinha (snake)",
+  "createAt": "01/11/2016",
+  "images": ["/images/snack-come-back-home/image (0).png", "/images/snack-come-back-home/image (1).png", "/images/snack-come-back-home/image (2).png", "/images/snack-come-back-home/image (3).png"],
+  "video": "0PSM8Th-GvM",
+  "skills": ["Game Design", "UI", "Development", "Game Art"]
+};
 },{}],"services/projects/index.ts":[function(require,module,exports) {
 "use strict";
 
@@ -85287,9 +85308,14 @@ var enemRunner = require('./enem-runner.json');
 
 var gremlinJump = require('./gremlin-jump.json');
 
+var mulherMelancia = require('./mulher-melancia.json');
+
+var snackComeBackHome = require('./snack-come-back-home.json');
+
 var projects = {
   'west-combat': westCombat,
   wbolh: wbolh,
+  'mulher-melancia': mulherMelancia,
   'recife-adventures': recifeAdventures,
   'salve-recife': salveRecife,
   'star-donkeys': starDonkeys,
@@ -85299,10 +85325,11 @@ var projects = {
   'speedball-3d': speedBall3d,
   'o-pequeno-urubu': oPequenoUrubu,
   'enem-runner': enemRunner,
-  'gremlin-jump': gremlinJump
+  'gremlin-jump': gremlinJump,
+  'snack-come-back-home': snackComeBackHome
 };
 exports.default = projects;
-},{"./west-combat.json":"services/projects/west-combat.json","./wbolh.json":"services/projects/wbolh.json","./recife-adventures.json":"services/projects/recife-adventures.json","./salve-recife.json":"services/projects/salve-recife.json","./star-donkeys.json":"services/projects/star-donkeys.json","./boy-do-bote.json":"services/projects/boy-do-bote.json","./embaixadinha.json":"services/projects/embaixadinha.json","./qual-e-a-nota.json":"services/projects/qual-e-a-nota.json","./speed-ball-3d.json":"services/projects/speed-ball-3d.json","./o-pequeno-urubu.json":"services/projects/o-pequeno-urubu.json","./enem-runner.json":"services/projects/enem-runner.json","./gremlin-jump.json":"services/projects/gremlin-jump.json"}],"../node_modules/@material-ui/icons/Menu.js":[function(require,module,exports) {
+},{"./west-combat.json":"services/projects/west-combat.json","./wbolh.json":"services/projects/wbolh.json","./recife-adventures.json":"services/projects/recife-adventures.json","./salve-recife.json":"services/projects/salve-recife.json","./star-donkeys.json":"services/projects/star-donkeys.json","./boy-do-bote.json":"services/projects/boy-do-bote.json","./embaixadinha.json":"services/projects/embaixadinha.json","./qual-e-a-nota.json":"services/projects/qual-e-a-nota.json","./speed-ball-3d.json":"services/projects/speed-ball-3d.json","./o-pequeno-urubu.json":"services/projects/o-pequeno-urubu.json","./enem-runner.json":"services/projects/enem-runner.json","./gremlin-jump.json":"services/projects/gremlin-jump.json","./mulher-melancia.json":"services/projects/mulher-melancia.json","./snack-come-back-home.json":"services/projects/snack-come-back-home.json"}],"../node_modules/@material-ui/icons/Menu.js":[function(require,module,exports) {
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -87541,8 +87568,8 @@ var Image = styled_components_1.default.img(templateObject_3 || (templateObject_
 
 var Project = function Project() {
   var _a = react_1.useState(false),
-      unityOpen = _a[0],
-      setUnityOpen = _a[1];
+      gameOpen = _a[0],
+      setGameOpen = _a[1];
 
   var _b = wouter_1.useRoute(App_1.routes.project),
       params = _b[1];
@@ -87562,7 +87589,7 @@ var Project = function Project() {
     },
     variant: "h3",
     gutterBottom: true
-  }, project.name), react_1.default.createElement(TypographyStyled, null, project.describe)), react_1.default.createElement(Grid_1.default, {
+  }, project.fullName), react_1.default.createElement(TypographyStyled, null, project.describe)), react_1.default.createElement(Grid_1.default, {
     item: true,
     sm: 12
   }, react_1.default.createElement(TypographyStyled, {
@@ -87578,7 +87605,7 @@ var Project = function Project() {
     }
   }, "Play Store"), react_1.default.createElement(Button_1.default, {
     onClick: function onClick() {
-      return setUnityOpen(true);
+      return setGameOpen(true);
     },
     color: "primary",
     variant: "contained"
@@ -87605,9 +87632,9 @@ var Project = function Project() {
       src: item
     }));
   }))), react_1.default.createElement(UnityDialog_1.default, {
-    open: unityOpen,
+    open: gameOpen,
     onClose: function onClose() {
-      return setUnityOpen(false);
+      return setGameOpen(false);
     },
     gameName: params.projectName
   }))));
@@ -87699,7 +87726,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58967" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59848" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
