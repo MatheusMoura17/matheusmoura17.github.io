@@ -85144,6 +85144,7 @@ module.exports = {
   "createAt": "11/03/2017",
   "images": ["/images/west-combat/image (0).png", "/images/west-combat/image (1).png", "/images/west-combat/image (2).png", "/images/west-combat/image (3).png", "/images/west-combat/image (4).png", "/images/west-combat/image (5).png", "/images/west-combat/image (6).png"],
   "video": "T3oVRHZlqFg",
+  "gameView": "unity",
   "skills": ["Game Design", "UI", "Development"]
 };
 },{}],"services/projects/wbolh.json":[function(require,module,exports) {
@@ -85275,6 +85276,7 @@ module.exports = {
   "createAt": "01/11/2016",
   "images": ["/images/snack-come-back-home/image (0).png", "/images/snack-come-back-home/image (1).png", "/images/snack-come-back-home/image (2).png", "/images/snack-come-back-home/image (3).png"],
   "video": "0PSM8Th-GvM",
+  "gameView": "html",
   "skills": ["Game Design", "UI", "Development", "Game Art"]
 };
 },{}],"services/projects/index.ts":[function(require,module,exports) {
@@ -87422,8 +87424,20 @@ var UnityContent_1 = __importDefault(require("./UnityContent"));
 exports.UnityContent = UnityContent_1.default;
 exports.default = Unity_1.default;
 
-},{"./components/Unity":"../node_modules/react-unity-webgl/distribution/components/Unity.js","./UnityContent":"../node_modules/react-unity-webgl/distribution/UnityContent.js"}],"Components/UnityDialog/index.tsx":[function(require,module,exports) {
+},{"./components/Unity":"../node_modules/react-unity-webgl/distribution/components/Unity.js","./UnityContent":"../node_modules/react-unity-webgl/distribution/UnityContent.js"}],"Components/GameView/index.tsx":[function(require,module,exports) {
 "use strict";
+
+var __makeTemplateObject = this && this.__makeTemplateObject || function (cooked, raw) {
+  if (Object.defineProperty) {
+    Object.defineProperty(cooked, "raw", {
+      value: raw
+    });
+  } else {
+    cooked.raw = raw;
+  }
+
+  return cooked;
+};
 
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
@@ -87449,6 +87463,8 @@ var react_1 = __importStar(require("react"));
 
 var react_unity_webgl_1 = __importStar(require("react-unity-webgl"));
 
+var styled_components_1 = __importDefault(require("styled-components"));
+
 var Dialog_1 = __importDefault(require("@material-ui/core/Dialog"));
 
 var DialogActions_1 = __importDefault(require("@material-ui/core/DialogActions"));
@@ -87457,10 +87473,11 @@ var DialogContent_1 = __importDefault(require("@material-ui/core/DialogContent")
 
 var Button_1 = __importDefault(require("@material-ui/core/Button"));
 
-var core_1 = require("@material-ui/core");
+var StyledIframe = styled_components_1.default.iframe(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  border: none;\n  width: 100%;\n  height: 100%;\n"], ["\n  border: none;\n  width: 100%;\n  height: 100%;\n"])));
 
-var UnityDialog = function UnityDialog(_a) {
-  var open = _a.open,
+var GameView = function GameView(_a) {
+  var variant = _a.variant,
+      open = _a.open,
       onClose = _a.onClose,
       gameName = _a.gameName;
 
@@ -87469,9 +87486,10 @@ var UnityDialog = function UnityDialog(_a) {
       setIsOpen = _b[1];
 
   var mainRef = react_1.useRef(null);
+  var builGamePath = "/builds/" + gameName;
   var unityContent = react_1.useMemo(function () {
-    return new react_unity_webgl_1.UnityContent("/builds/" + gameName + "/" + gameName + ".json", "/builds/" + gameName + "/UnityLoader.js");
-  }, [gameName]);
+    return new react_unity_webgl_1.UnityContent(builGamePath + "/" + gameName + ".json", builGamePath + "/UnityLoader.js");
+  }, [builGamePath, gameName]);
   react_1.useEffect(function () {
     setIsOpen(open);
   }, [open]);
@@ -87493,17 +87511,20 @@ var UnityDialog = function UnityDialog(_a) {
     maxWidth: "lg"
   }, react_1.default.createElement(DialogContent_1.default, null, react_1.default.createElement("div", {
     ref: mainRef
-  }, react_1.default.createElement(react_unity_webgl_1.default, {
+  }, variant === 'unity' && react_1.default.createElement(react_unity_webgl_1.default, {
     unityContent: unityContent
-  })), react_1.default.createElement(core_1.Typography, null, "Pressione W A S D para andar e B para posicionar uma dinamite")), react_1.default.createElement(DialogActions_1.default, null, react_1.default.createElement(Button_1.default, {
+  }), variant === 'html' && react_1.default.createElement(StyledIframe, {
+    src: builGamePath + "/index.html"
+  }))), react_1.default.createElement(DialogActions_1.default, null, react_1.default.createElement(Button_1.default, {
     onClick: handleFullScreenClicked
   }, "Tela cheia"), react_1.default.createElement(Button_1.default, {
     onClick: handleClose
   }, "Fechar")));
 };
 
-exports.default = UnityDialog;
-},{"react":"../node_modules/react/index.js","react-unity-webgl":"../node_modules/react-unity-webgl/distribution/Exports.js","@material-ui/core/Dialog":"../node_modules/@material-ui/core/esm/Dialog/index.js","@material-ui/core/DialogActions":"../node_modules/@material-ui/core/esm/DialogActions/index.js","@material-ui/core/DialogContent":"../node_modules/@material-ui/core/esm/DialogContent/index.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"pages/Project/index.tsx":[function(require,module,exports) {
+exports.default = GameView;
+var templateObject_1;
+},{"react":"../node_modules/react/index.js","react-unity-webgl":"../node_modules/react-unity-webgl/distribution/Exports.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","@material-ui/core/Dialog":"../node_modules/@material-ui/core/esm/Dialog/index.js","@material-ui/core/DialogActions":"../node_modules/@material-ui/core/esm/DialogActions/index.js","@material-ui/core/DialogContent":"../node_modules/@material-ui/core/esm/DialogContent/index.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js"}],"pages/Project/index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __makeTemplateObject = this && this.__makeTemplateObject || function (cooked, raw) {
@@ -87556,7 +87577,7 @@ var Button_1 = __importDefault(require("@material-ui/core/Button"));
 
 var Layout_1 = __importDefault(require("../../Components/Layout"));
 
-var UnityDialog_1 = __importDefault(require("../../Components/UnityDialog"));
+var GameView_1 = __importDefault(require("../../Components/GameView"));
 
 var App_1 = require("../../App");
 
@@ -87603,7 +87624,7 @@ var Project = function Project() {
     style: {
       marginRight: 5
     }
-  }, "Play Store"), react_1.default.createElement(Button_1.default, {
+  }, "Play Store"), project.gameView && react_1.default.createElement(Button_1.default, {
     onClick: function onClick() {
       return setGameOpen(true);
     },
@@ -87631,7 +87652,8 @@ var Project = function Project() {
     }, react_1.default.createElement(Image, {
       src: item
     }));
-  }))), react_1.default.createElement(UnityDialog_1.default, {
+  }))), project.gameView && react_1.default.createElement(GameView_1.default, {
+    variant: project.gameView,
     open: gameOpen,
     onClose: function onClose() {
       return setGameOpen(false);
@@ -87642,7 +87664,7 @@ var Project = function Project() {
 
 exports.default = Project;
 var templateObject_1, templateObject_2, templateObject_3;
-},{"react":"../node_modules/react/index.js","wouter":"../node_modules/wouter/index.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","react-youtube-embed":"../node_modules/react-youtube-embed/dist/index.js","@material-ui/core/Container":"../node_modules/@material-ui/core/esm/Container/index.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","../../Components/Layout":"Components/Layout.tsx","../../Components/UnityDialog":"Components/UnityDialog/index.tsx","../../App":"App.tsx","../../services/projects":"services/projects/index.ts"}],"App.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","wouter":"../node_modules/wouter/index.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","@material-ui/core/Grid":"../node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/Typography":"../node_modules/@material-ui/core/esm/Typography/index.js","react-youtube-embed":"../node_modules/react-youtube-embed/dist/index.js","@material-ui/core/Container":"../node_modules/@material-ui/core/esm/Container/index.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","../../Components/Layout":"Components/Layout.tsx","../../Components/GameView":"Components/GameView/index.tsx","../../App":"App.tsx","../../services/projects":"services/projects/index.ts"}],"App.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -87726,7 +87748,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59848" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52311" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

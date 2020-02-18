@@ -1,0 +1,80 @@
+#screen {
+	background:url("../imagens/game/background.png");
+	background-size: 700px 480px;
+	width: 640px;
+	height: 480px;
+	border-style: solid;
+	border-color: #888888;
+}
+
+.gameOver{
+	background:url("../imagens/game/tela.png");
+	background-size: cover;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+	padding-top: 100px;
+}
+
+.btn-back{
+	position: absolute;
+	left: 25px;
+	top: 25px;
+}
+
+.btn, .btn2{
+	background: none;
+	border: none;
+}
+
+.btn-anim{
+	animation: scaleBtn 1s infinite alternate;
+	-webkit-animation:scaleBtn 1s infinite linear alternate;
+}
+
+.btn-anim:hover{
+	transform: scale(1,1);
+	animation: none;
+	-webkit-animation:none;
+}
+
+.btn, .btn-img{
+	width: 100px;
+	height: 100px;
+}
+
+.btn2, .btn-img2{
+	width: 100px;
+	height: 123px;
+}
+
+.main{
+	width: 640px;
+	height: 480px;
+	margin: 0 auto;
+	margin-top: 70px;
+}
+
+.left-panel{
+	color: #fff;
+}
+
+.right-buttons{
+	color: #fff;
+	float: right;
+}
+
+.hiddenElements{
+	display: none;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background:url("../imagens/game/tela.png");
+	background-size: cover;
+	overflow: hidden;
+}
