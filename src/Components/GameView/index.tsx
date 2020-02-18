@@ -1,30 +1,43 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react'
 import Unity, { UnityContent } from 'react-unity-webgl'
+import styled from 'styled-components'
 
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import Button from '@material-ui/core/Button'
 
-import { Typography } from '@material-ui/core'
+const StyledIframe = styled.iframe`
+  border: none;
+  width: 100%;
+  height: 100%;
+`
 
-interface IUnityDialog {
+interface IGameView {
   open: boolean
+  variant: 'html' | 'unity'
   onClose: () => void
   gameName: string
 }
 
-const UnityDialog: React.FC<IUnityDialog> = ({ open, onClose, gameName }) => {
+const GameView: React.FC<IGameView> = ({
+  variant,
+  open,
+  onClose,
+  gameName,
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const mainRef = useRef<HTMLDivElement>(null)
+
+  const builGamePath = `/builds/${gameName}`
 
   const unityContent = useMemo(
     () =>
       new UnityContent(
-        `/builds/${gameName}/${gameName}.json`,
-        `/builds/${gameName}/UnityLoader.js`,
+        `${builGamePath}/${gameName}.json`,
+        `${builGamePath}/UnityLoader.js`,
       ),
-    [gameName],
+    [builGamePath, gameName],
   )
 
   useEffect(() => {
@@ -44,11 +57,11 @@ const UnityDialog: React.FC<IUnityDialog> = ({ open, onClose, gameName }) => {
     <Dialog onClose={handleClose} open={isOpen} maxWidth="lg">
       <DialogContent>
         <div ref={mainRef}>
-          <Unity unityContent={unityContent} />
+          {variant === 'unity' && <Unity unityContent={unityContent} />}
+          {variant === 'html' && (
+            <StyledIframe src={`${builGamePath}/index.html`} />
+          )}
         </div>
-        <Typography>
-          Pressione W A S D para andar e B para posicionar uma dinamite
-        </Typography>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleFullScreenClicked}>Tela cheia</Button>
@@ -58,4 +71,4 @@ const UnityDialog: React.FC<IUnityDialog> = ({ open, onClose, gameName }) => {
   )
 }
 
-export default UnityDialog
+export default GameView

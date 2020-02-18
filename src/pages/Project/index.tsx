@@ -9,10 +9,9 @@ import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
 
 import Layout from '../../Components/Layout'
-import UnityDialog from '../../Components/UnityDialog'
+import GameView from '../../Components/GameView'
 import { routes } from '../../App'
 import projects from '../../services/projects'
-
 const StyledContainer = styled(Container)`
   background: #fff;
 `
@@ -64,13 +63,15 @@ const Project: React.FC<IHomeProps> = () => {
                 Play Store
               </Button>
             )}
-            <Button
-              onClick={() => setGameOpen(true)}
-              color="primary"
-              variant="contained"
-            >
-              Jogar Online
-            </Button>
+            {project.gameView && (
+              <Button
+                onClick={() => setGameOpen(true)}
+                color="primary"
+                variant="contained"
+              >
+                Jogar Online
+              </Button>
+            )}
           </Grid>
 
           {/** Vídeo demonstrativo */}
@@ -95,12 +96,15 @@ const Project: React.FC<IHomeProps> = () => {
             </Grid>
           </Grid>
 
-          {/** Dialogs */}
-          <UnityDialog
-            open={gameOpen}
-            onClose={() => setGameOpen(false)}
-            gameName={params.projectName}
-          />
+          {/** Opções para jogar online Dialogs */}
+          {project.gameView && (
+            <GameView
+              variant={project.gameView}
+              open={gameOpen}
+              onClose={() => setGameOpen(false)}
+              gameName={params.projectName}
+            />
+          )}
         </Grid>
       </StyledContainer>
     </Layout>
