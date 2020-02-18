@@ -4,6 +4,7 @@
 interface IProject {
   /** Nome do projeto */
   name: string
+  fullName: string
   /** Descrição completa */
   describe: string
   /** Data de criação */

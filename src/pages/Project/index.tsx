@@ -46,7 +46,7 @@ const Project: React.FC<IHomeProps> = () => {
               variant="h3"
               gutterBottom
             >
-              {project.name}
+              {project.fullName}
             </TypographyStyled>
             <TypographyStyled>{project.describe}</TypographyStyled>
           </Grid>
